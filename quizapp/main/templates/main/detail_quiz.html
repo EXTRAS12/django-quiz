@@ -1,0 +1,36 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}Отвечаем на вопросы{% endblock %}
+
+{% block content %}
+<div class="py-6 px-6">
+    <h1 class="mt-5 text-xl">Категория: <strong>{{ quiz.name }}</strong></h1>
+
+    {% if quest %}
+
+    <h1 class="mt-5 text-4xl">{{ quest.quest }}</h1>
+
+    <form class="form" action="" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="quest_pk" value="{{quest.pk}}">
+
+        {% for i in quest.questions.all%}
+
+        <div class="flex items-center mb-4 mt-5">
+            <input  type="checkbox" name="answer_pk" id="choice-{{forloop.counter}}" value="{{ i.pk }}" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+            <label for="choice-{{forloop.counter}}" class="ml-2 text-xl font-medium text-gray-900 dark:text-gray-300">{{ i.answer }}</label>
+        </div>
+        {% endfor %}
+        <button class="py-4 px-8 bg-violet-500 text-white rounded-xl">Ответить</button>
+
+    </form>
+    {%endif%}
+    {% comment %} {% if next %}
+    <div style="margin-top:12px; font-size:16px">
+    <a href="{% url 'display_quest' quiz.id next.id %}">→Следующий вопрос</a>
+    </div>
+    {% endif %} {% endcomment %}
+
+
+</div>
+{% endblock %}

@@ -1,0 +1,13 @@
+.idea
+.vscode
+.isort.cfg
+.mypy.ini
+settingslocal.py
+/node_modules
+/.pnp
+.pnp.js
+venv
+.venv
+django_cache
+__pycache__/
+*/__pycache__/

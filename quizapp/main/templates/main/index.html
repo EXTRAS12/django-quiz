@@ -1,0 +1,12 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}Категории{% endblock %}
+
+{% block content %}
+<h1 class="mt-5 text-center text-violet-800 text-4xl">Выберите рубрику</h1>
+{% for quiz in quizzes %}
+<div>
+<h1 class="mt-5 px-5 py-5 text-4xl bg-teal-900 text-center rounded-xl text-white"><a href="{% url 'detail_quiz' quiz.id %}">{{ quiz.name }}</a><h1>
+<div>
+{% endfor %}
+{% endblock %}
